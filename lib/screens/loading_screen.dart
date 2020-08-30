@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:clima/services/location.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -8,23 +9,17 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   void getlocation() async {
-    try{
-      somethingthatexpectslessthan10(12);
-      Position position = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-      print(position);
-    }
-    catch(e)
-    {
-      print(e);
-    }
+    Location loc = Location();
+    await loc.getcurrentposition();
+    print(loc.latitue);
+    print(loc.longitude);
   }
 
-  void somethingthatexpectslessthan10(int n)
-  {
-    if(n>10)
-      throw 'the number entered is greater than 10';
-  }
+//  void somethingthatexpectslessthan10(int n)
+//  {
+//    if(n>10)
+//      throw 'the number entered is greater than 10';
+//  }
   @override
   void initState() {
     // TODO: implement initState
